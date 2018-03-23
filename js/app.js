@@ -30,9 +30,9 @@ function shuffle(array) {
 }
 
 
-for (let open of frontCards) {
+/*for (let open of frontCards) {
 	open.classList.add('open');
-};
+};*/
 
 
 
@@ -48,9 +48,6 @@ for (let open of frontCards) {
  */
 for (let show of frontCards) {
 show.addEventListener('click',function () {
-	show.classList.add('show');
+	show.classList.add('open' , 'show');
   });
 }
-document.addEventListener('click' ,function () {
-console.log("Hello");
-});
