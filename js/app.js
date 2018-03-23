@@ -1,6 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
+ const cardList = document.getElementById('cardList');
+ const cards = cardList.getElementsByClassName('fa');
+ const frontCards = document.getElementsByClassName('card');
+
 
 
 /*
@@ -26,6 +30,12 @@ function shuffle(array) {
 }
 
 
+for (let open of frontCards) {
+	open.classList.add('open');
+};
+
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -36,3 +46,11 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+for (let show of frontCards) {
+show.addEventListener('click',function () {
+	show.classList.add('show');
+  });
+}
+document.addEventListener('click' ,function () {
+console.log("Hello");
+});
