@@ -2,9 +2,8 @@
  * Create a list that holds all of your cards
  */
  const cardList = document.getElementById('cardList');
- const cards = cardList.getElementsByClassName('fa');
- const frontCards = document.getElementsByClassName('card');
-
+ let cards = cardList.getElementsByClassName('fa');
+ let frontCards = document.getElementsByClassName('card');
 
 
 /*
@@ -29,12 +28,25 @@ function shuffle(array) {
     return array;
 }
 
+// converting cards from object to array
 
-/*for (let open of frontCards) {
-	open.classList.add('open');
-};*/
+	frontCards = Array.from(frontCards);
 
+// creating new deck with shuffled cards
+function newDeck(){
+	frontCards = shuffle(frontCards);
+	for (let i = 0; i < frontCards.length; i++){
+		cardList.innerHTML="";
+		Array.prototype.forEach.call(frontCards, function(item){
+			cardList.appendChild(item);
+		});
+		//removing classes from cards
+		frontCards[i].classList.remove('open','show','match');	
+	}
+}
 
+newDeck();
+	
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -46,8 +58,52 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+
+ // adds css class to cards
+
+/* function Cardclicked(){
 for (let show of frontCards) {
 show.addEventListener('click',function () {
 	show.classList.add('open' , 'show');
-  });
+   });
+
+  };
+
+}
+
+Cardclicked();*/
+
+
+// variable for open cards
+const openCard =[];
+
+function openCards(){
+	openCard.push(this);
+	const leng = openCard.length;
+		if(leng==2){
+			moveCount();
+			if(openCard[0]===openCard[1]){
+				match();
+			}else{
+				notMatch();
+			}
+		}
+
+}
+
+
+
+function match(){
+	openCard[0] = classList.add('match');
+	openCard[1] = classList.add('match');
+	openCard[0] = classList.remove('open', 'show');
+	openCard[1] = classList.remove('open', 'show');
+
+}
+
+function notMatch(){
+	openCard[0] = classList.remove['open', 'show'];
+	openCard[1] = classList.remove['open', 'show'];
+
 }
