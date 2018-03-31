@@ -31,7 +31,7 @@ function shuffle(array) {
 
 	/*frontCards = Array.from(frontCards);*/
 	frontCards = [...frontCards];
-
+window.onload = newDeck();
 // creating new deck with shuffled cards
 function newDeck(){
 	frontCards = shuffle(frontCards);
@@ -45,7 +45,6 @@ function newDeck(){
 	}
 }
 
-newDeck();
 	
 
 /*
@@ -60,17 +59,6 @@ newDeck();
  */
 
 
- // adds css class to cards
-
-/* function Cardclicked(){
-for (let show of frontCards) {
-show.addEventListener('click',function () {
-	show.classList.add('open' , 'show');
-   });
-
-  };
-}*/
-
 
 // variable for open cards
 let openCard =[];
@@ -80,10 +68,13 @@ function openCards(){
 	let leng = openCard.length;
 		if(leng === 2){
 			moves();
+			
 			if(openCard[0].innerHTML === openCard[1].innerHTML){
 				match();
+			
 			}else{
 				notMatch();
+			
 			}
 		}
 
@@ -99,19 +90,48 @@ function match(){
 	openCard = [];
 	console.log("works")
 
+
 }
 
 //function for unmatched elements
 
 function notMatch(){
-
+	    openCard[0].classList.add("unmatched");
+        openCard[1].classList.add("unmatched");
+        disable();
+        
 setTimeout(function(){
-        openCard[0].classList.remove("show", "open", "no-event","unmatched");
-        openCard[1].classList.remove("show", "open", "no-event","unmatched");
+        openCard[0].classList.remove("show", "open","unmatched");
+        openCard[1].classList.remove("show", "open","unmatched");
         openCard = [];
-    },800);
+        enable();
+    },900);
+
+
 
 }
+
+function disable(){
+	frontCards.filter.call(frontCards, function(frontCard){
+		frontCard.classList.add('disable');
+	});
+}
+
+function enable(){
+	frontCards.filter.call(frontCards, function(frontCard){
+		frontCard.classList.remove('disable');
+	});
+
+}
+
+//prevent double click on a card to fix bug
+
+function doubleClick(){
+	this.addEventListener('dbclick', function(e){
+		event.preventDefault();
+	});
+}
+
 
 
 //count moves
@@ -120,14 +140,14 @@ let counter = 0;
 function moves(){
 	counter++;
 	move.innerHTML = counter;
-	if(counter === 2 ){
+	if(counter === 1 ){
 		timer();
 	}
 }
 
 //time counting function
 
-let seconds = 0, minuts = 0, hours = 0;
+let seconds = 0, minuts = 0
 let time = document.querySelector('.time');
 
 function timer(){
@@ -153,5 +173,6 @@ var displayCard = function (){
 for (let frontCard of frontCards){
     frontCard.addEventListener("click", displayCard);
     frontCard.addEventListener("click", openCards);
+    frontCard.addEventListener("click",doubleClick);
 /*    frontCard.addEventListener("click",congratulations);*/
 };

@@ -78,9 +78,8 @@ h1 {
 .deck .card.match {
 /*    cursor: default;
     background: /*#02ccba*/red;
-    font-size: 33px;*/
     cursor: default;
-    background: red;
+    background: green;
     font-size: 33px;
     animation-name: rubberBand;
     -webkit-backface-visibility: visible !important;
@@ -88,6 +87,27 @@ h1 {
     animation-duration: .75s;
     
 }
+
+.deck .card.unmatched{
+    cursor: default;
+    background: red;
+    font-size: 33px;
+    animation-name: rubberBand;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+
+}
+
+.deck .card.disable {
+    pointer-events: none;
+    opacity: 0.8;
+}
+/*
+.deck .card.enable {
+    pointer-events: auto;
+
+}*/
 
 /*
  * Styles for the Score Panel
