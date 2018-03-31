@@ -80,7 +80,7 @@ function openCards(){
 	let leng = openCard.length;
 		if(leng === 2){
 			moves();
-			if(openCard[0] === openCard[1]){
+			if(openCard[0].innerHTML === openCard[1].innerHTML){
 				match();
 			}else{
 				notMatch();
@@ -94,11 +94,9 @@ function openCards(){
 //function for match elements
 function match(){
 
-	openCard[0].classList.add('match');
-	openCard[1].classList.add('match');
-/*	openCard[0].classList.remove('open', 'show');
-	openCard[1].classList.remove('open', 'show');*/
-	openCard =[];
+	openCard[0].classList.add('match','open','show');
+	openCard[1].classList.add('match','open','show');
+	openCard = [];
 	console.log("works")
 
 }
@@ -107,9 +105,11 @@ function match(){
 
 function notMatch(){
 
-	openCard[0].classList.remove('open', 'show');
-	openCard[1].classList.remove('open', 'show');
-	openCard =[];
+setTimeout(function(){
+        openCard[0].classList.remove("show", "open", "no-event","unmatched");
+        openCard[1].classList.remove("show", "open", "no-event","unmatched");
+        openCard = [];
+    },800);
 
 }
 
@@ -120,7 +120,7 @@ let counter = 0;
 function moves(){
 	counter++;
 	move.innerHTML = counter;
-	if(counter === 1){
+	if(counter === 2 ){
 		timer();
 	}
 }
@@ -143,6 +143,7 @@ function timer(){
 	},1000);
 }
 
+//add css to cards to display
 var displayCard = function (){
     this.classList.add("open");
     this.classList.add("show");

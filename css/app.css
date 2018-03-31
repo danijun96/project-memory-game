@@ -76,9 +76,16 @@ h1 {
 }
 
 .deck .card.match {
-    cursor: default;
+/*    cursor: default;
     background: /*#02ccba*/red;
+    font-size: 33px;*/
+    cursor: default;
+    background: red;
     font-size: 33px;
+    animation-name: rubberBand;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
     
 }
 
