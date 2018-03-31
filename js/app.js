@@ -5,7 +5,6 @@
  let cards = cardList.getElementsByClassName('fa');
  let frontCards = document.getElementsByClassName('card');
 
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -30,7 +29,8 @@ function shuffle(array) {
 
 // converting cards from object to array
 
-	frontCards = Array.from(frontCards);
+	/*frontCards = Array.from(frontCards);*/
+	frontCards = [...frontCards];
 
 // creating new deck with shuffled cards
 function newDeck(){
@@ -62,53 +62,70 @@ newDeck();
 
  // adds css class to cards
 
- function Cardclicked(){
+/* function Cardclicked(){
 for (let show of frontCards) {
 show.addEventListener('click',function () {
 	show.classList.add('open' , 'show');
    });
 
   };
-
-}
-
+}*/
 
 
 // variable for open cards
-const openCard =[];
+let openCard =[];
 
 function openCards(){
 	openCard.push(this);
-	const leng = openCard.length;
-		if(leng==2){
-			
-			if(openCard[0].type===openCard[1].type){
+	let leng = openCard.length;
+		if(leng === 2){
+			moves();
+			if(openCard[0] === openCard[1]){
 				match();
 			}else{
-				/*notMatch();*/
+				notMatch();
 			}
 		}
 
 }
-openCards();
 
 
 
+//function for match elements
 function match(){
-	openCard[0] = classList.add('match');
-	openCard[1] = classList.add('match');
-	openCard[0] = classList.remove('open', 'show');
-	openCard[1] = classList.remove('open', 'show');
+
+	openCard[0].classList.add('match');
+	openCard[1].classList.add('match');
+/*	openCard[0].classList.remove('open', 'show');
+	openCard[1].classList.remove('open', 'show');*/
 	openCard =[];
 	console.log("works")
 
 }
 
+//function for unmatched elements
+
 function notMatch(){
-	openCard[0] = classList.remove('open', 'show');
-	openCard[1] = classList.remove('open', 'show');
+
+	openCard[0].classList.remove('open', 'show');
+	openCard[1].classList.remove('open', 'show');
+	openCard =[];
 
 }
+
+
+//count moves
+let move = document.querySelector('.moves');
+let counter = 0;
+function moves(){
+	counter++;
+	move.innerHTML = counter;
+	if(counter === 1){
+		timer();
+	}
+}
+
+//time counting function
 
 let seconds = 0, minuts = 0, hours = 0;
 let time = document.querySelector('.time');
@@ -119,27 +136,21 @@ function timer(){
 		if(seconds == 60){
 			minuts++;
 			seconds = 0; 
-			if(minuts == 60){
-				hours++;
-				minuts = 0;
-			}
 		}
-		time.innerHTML = seconds+" seconds "+minuts+" minuts "+hours+" hours ";
+		time.innerHTML = seconds+" seconds "+minuts+" minuts ";
 		console.log(time);
 
 	},1000);
 }
 
 var displayCard = function (){
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-/*    this.classList.toggle("disabled");*/
+    this.classList.add("open");
+    this.classList.add("show");
 };
 
 
-for (var i = 0; i < frontCards.length; i++){
-    frontCard = frontCards[i];
-    frontCard.addEventListener("click", Cardclicked);
+for (let frontCard of frontCards){
+    frontCard.addEventListener("click", displayCard);
     frontCard.addEventListener("click", openCards);
 /*    frontCard.addEventListener("click",congratulations);*/
 };
