@@ -4,6 +4,9 @@
  const cardList = document.getElementById('cardList');
  let cards = cardList.getElementsByClassName('fa');
  let frontCards = document.getElementsByClassName('card');
+ const star1 = document.getElementById('star1');
+ const star2 = document.getElementById('star2');
+ const star3 = document.getElementById('star3');
 
 /*
  * Display the cards on the page
@@ -91,6 +94,7 @@ function match(){
 	console.log("works")
 
 
+
 }
 
 //function for unmatched elements
@@ -108,6 +112,11 @@ setTimeout(function(){
     },900);
 
 
+
+}
+
+function allmatched(){
+	
 
 }
 
@@ -134,6 +143,7 @@ function doubleClick(){
 
 
 
+
 //count moves
 let move = document.querySelector('.moves');
 let counter = 0;
@@ -142,7 +152,13 @@ function moves(){
 	move.innerHTML = counter;
 	if(counter === 1 ){
 		timer();
-	}
+	};
+//star rating 
+	if(counter > 12 && counter < 16){
+		star1.remove();
+	}else if (counter > 17){
+		star2.remove();
+	};
 }
 
 //time counting function
