@@ -7,6 +7,10 @@
  const star1 = document.getElementById('star1');
  const star2 = document.getElementById('star2');
  const star3 = document.getElementById('star3');
+ const restart = document.getElementsByClassName('fa fa-repeat');
+ let interval;
+ let seconds = 0, minuts = 0;
+ let counter = 0;
 
 /*
  * Display the cards on the page
@@ -46,6 +50,8 @@ function newDeck(){
 		//removing classes from cards
 		frontCards[i].classList.remove('open','show','match');	
 	}
+
+
 }
 
 	
@@ -146,7 +152,7 @@ function doubleClick(){
 
 //count moves
 let move = document.querySelector('.moves');
-let counter = 0;
+
 function moves(){
 	counter++;
 	move.innerHTML = counter;
@@ -163,11 +169,11 @@ function moves(){
 
 //time counting function
 
-let seconds = 0, minuts = 0
+
 let time = document.querySelector('.time');
 
 function timer(){
-	setInterval(function(){
+	interval = setInterval(function(){
 		seconds++;
 		if(seconds == 60){
 			minuts++;
@@ -185,6 +191,25 @@ var displayCard = function (){
     this.classList.add("show");
 };
 
+/*//restart function
+function resetGame(){
+	newDeck();
+	//reset timer
+
+const time = document.getElementsByClassName('time');
+time.innerHTML = 0;
+clearInterval(interval);
+
+//reset moves
+
+let move = document.getElementsByClassName('moves');
+move.innerHTML = "0";
+
+
+}
+
+restart[0].addEventListener('click', resetGame);
+*/
 
 for (let frontCard of frontCards){
     frontCard.addEventListener("click", displayCard);
