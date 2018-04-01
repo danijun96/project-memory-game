@@ -37,7 +37,8 @@ function shuffle(array) {
 // converting cards from object to array
 
 	/*frontCards = Array.from(frontCards);*/
-	frontCards = [...frontCards];
+frontCards = [...frontCards];
+
 window.onload = newDeck();
 // creating new deck with shuffled cards
 function newDeck(){
@@ -97,7 +98,7 @@ function match(){
 	openCard[0].classList.add('match','open','show');
 	openCard[1].classList.add('match','open','show');
 	openCard = [];
-	console.log("works")
+	/*console.log("works")*/
 
 
 
@@ -120,9 +121,19 @@ setTimeout(function(){
 
 
 }
+let matchedCards = document.getElementsByClassName('match');
 
 function allmatched(){
+	if(matchedCards===16){
+		winnerModal();
+	}
 	
+
+}
+
+
+function winnerModal(){
+
 
 }
 
@@ -136,17 +147,7 @@ function enable(){
 	frontCards.filter.call(frontCards, function(frontCard){
 		frontCard.classList.remove('disable');
 	});
-
 }
-
-//prevent double click on a card to fix bug
-
-function doubleClick(){
-	this.addEventListener('dbclick', function(e){
-		event.preventDefault();
-	});
-}
-
 
 
 
@@ -214,6 +215,5 @@ restart[0].addEventListener('click', resetGame);
 for (let frontCard of frontCards){
     frontCard.addEventListener("click", displayCard);
     frontCard.addEventListener("click", openCards);
-    frontCard.addEventListener("click",doubleClick);
 /*    frontCard.addEventListener("click",congratulations);*/
 };
