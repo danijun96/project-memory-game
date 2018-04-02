@@ -174,3 +174,93 @@ h1 {
     text-decoration: none;
     cursor: pointer;
 }
+
+#play-again {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    max-width: 100px;
+    height: auto;
+    padding: 46px 52px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: auto;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#play-again:hover {
+    background-color: #e7e7e7;
+}
+
+#totalStar {
+    font-size: 40px;
+    text-align: center;
+
+}
+
+#totalStar li{
+    list-style-type: none;
+    color: #efa209;
+    display: inline-block;
+    font-size: 40px;
+    text-align: center;
+
+}
+
+#totalTime{
+    font-size: 40px;
+    text-align: center;
+
+}
+
+#totalMove {
+    font-size: 40px;
+    text-align: center;
+
+}
+
+ @media (max-width: 320px) {
+    .deck {
+        width: 85%;
+    }
+
+    .deck .card {
+        height: 4.7rem;
+        width: 4.7rem;
+    }
+}
+
+
+/* For Tablets and larger screens
+****************/
+
+@media (min-width: 768px) {
+    .container {
+        font-size: 22px;
+    }
+
+    .deck {
+        width: 660px;
+        height: 680px;
+    }
+
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .modal {
+        width: 60%;
+    }
+}

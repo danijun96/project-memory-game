@@ -126,7 +126,7 @@ setTimeout(function(){
 let matchedCards = document.getElementsByClassName('match');
 
 function allmatched(){
-	if(matchedCards.length === 2){
+	if(matchedCards.length === 16){
 		
 		console.log("allmatched");
 		winnerModal();
@@ -161,9 +161,9 @@ window.onclick = function(event) {
     }
 }
 
-document.getElementById('totalStar').innerHTML = "stars " + star[0].innerHTML;
-document.getElementById('totalMove').innerHTML = "moves " + move.innerHTML;
-document.getElementById('totalTime').innerHTML = "time " + time.innerHTML;
+document.getElementById('totalStar').innerHTML = "Stars : " + star[0].innerHTML;
+document.getElementById('totalMove').innerHTML = "Moves : " + move.innerHTML;
+document.getElementById('totalTime').innerHTML = "Time : " + time.innerHTML;
 
 }
 
