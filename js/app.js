@@ -81,6 +81,7 @@ function openCards(){
 			
 			if(openCard[0].innerHTML === openCard[1].innerHTML){
 				match();
+				allmatched();
 			
 			}else{
 				notMatch();
@@ -121,13 +122,14 @@ setTimeout(function(){
 
 
 }
+
 let matchedCards = document.getElementsByClassName('match');
 
 function allmatched(){
-	if(matchedCards===16){
-		winnerModal();
+	if(matchedCards.length === 16){
+		/*winnerModal();*/
+		console.log("allmatched");
 	}
-	
 
 }
 
@@ -190,6 +192,7 @@ function timer(){
 var displayCard = function (){
     this.classList.add("open");
     this.classList.add("show");
+    this.classList.add('disable');
 };
 
 /*//restart function
@@ -212,8 +215,12 @@ move.innerHTML = "0";
 restart[0].addEventListener('click', resetGame);
 */
 
+//disable double click on a card
+
+
 for (let frontCard of frontCards){
     frontCard.addEventListener("click", displayCard);
     frontCard.addEventListener("click", openCards);
 /*    frontCard.addEventListener("click",congratulations);*/
+
 };
