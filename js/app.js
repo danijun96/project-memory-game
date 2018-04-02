@@ -126,16 +126,44 @@ setTimeout(function(){
 let matchedCards = document.getElementsByClassName('match');
 
 function allmatched(){
-	if(matchedCards.length === 16){
-		/*winnerModal();*/
+	if(matchedCards.length === 2){
+		
 		console.log("allmatched");
+		winnerModal();
+		clearInterval(interval);
 	}
 
 }
 
+const star = document.getElementsByClassName('stars');
+//modal function from https://www.w3schools.com/howto/howto_css_modals.asp
+
 
 function winnerModal(){
+// Get the modal
+var modal = document.getElementById('myModal');
 
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+modal.classList.add('showModal');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+document.getElementById('totalStar').innerHTML = "stars " + star[0].innerHTML;
+document.getElementById('totalMove').innerHTML = "moves " + move.innerHTML;
+document.getElementById('totalTime').innerHTML = "time " + time.innerHTML;
 
 }
 
@@ -215,7 +243,6 @@ move.innerHTML = "0";
 restart[0].addEventListener('click', resetGame);
 */
 
-//disable double click on a card
 
 
 for (let frontCard of frontCards){
@@ -224,3 +251,5 @@ for (let frontCard of frontCards){
 /*    frontCard.addEventListener("click",congratulations);*/
 
 };
+
+
